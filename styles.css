@@ -1,0 +1,34 @@
+/* Style for the pop-up container */
+#custom-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 2px solid #ccc;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 10000;
+    text-align: center;
+  }
+  
+  /* Style for the pop-up content */
+  .popup-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Style for the close button */
+  #closePopup {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  #closePopup:hover {
+    background-color: #0056b3;
+  }

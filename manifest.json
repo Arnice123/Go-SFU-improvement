@@ -1,21 +1,28 @@
 {
-  "manifest_version": 3,
-  "name": "GoSFU Inconvenient",
-  "version": "1.0",
-  "description": "A Chrome extension that shows a friendly pop-up.",
-  "permissions": [
-    "activeTab",
-    "scripting"
-  ],
-  "background": {
-    "service_worker": "background.js"
-  },
-  "action": {
-    "default_popup": "popup.html",
-    "default_icon": {
-      "16": "icons/icon16.png",
-      "48": "icons/icon48.png",
-      "128": "icons/icon128.png"
-    }
+    "manifest_version": 3,
+    "name": "GoSFU Inconvenient",
+    "version": "1.0",
+    "description": "A Chrome extension that injects a pop-up into webpages.",
+    "permissions": [
+      "activeTab",
+      "scripting"
+    ],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16": "icons/icon16.png",
+        "48": "icons/icon48.png",
+        "128": "icons/icon128.png"
+      }
+    },
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["content.js"],
+        "css": ["styles.css"]
+      }
+    ]
   }
-}
