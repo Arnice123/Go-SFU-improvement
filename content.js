@@ -16,9 +16,11 @@ function showPopup() {
     popup.id = 'custom-popup';
     popup.innerHTML = `
       <div class="popup-content">
-        <h2>Hello!</h2>
-        <p>This is a modal pop-up.</p>
-        <button id="closePopup">Close</button>
+        <h2>Access Restricted</h2>
+        <p>Enter the codeword to close this pop-up:</p>
+        <input type="text" id="codewordInput" placeholder="Enter codeword" />
+        <button id="submitCodeword">Submit</button>
+        <p id="errorMessage" style="color: red; display: none;">Incorrect codeword. Try again.</p>
       </div>
     `;
   
@@ -26,10 +28,28 @@ function showPopup() {
     document.body.appendChild(overlay);
     document.body.appendChild(popup);
   
-    // Add event listener to close the pop-up and remove the overlay
-    document.getElementById('closePopup').addEventListener('click', () => {
-      popup.remove();
-      overlay.remove();
+    let attemptCount = 0; // Track the number of attempts
+  
+    // Add event listener to check the codeword
+    document.getElementById('submitCodeword').addEventListener('click', () => {
+      const codewordInput = document.getElementById('codewordInput');
+      const errorMessage = document.getElementById('errorMessage');
+  
+      // Always show an error message on the first attempt
+      if (attemptCount === 0) {
+        errorMessage.style.display = 'block'; // Show error message
+        codewordInput.value = ''; // Clear the input field
+        attemptCount++; // Increment attempt count
+      } else {
+        // Check if the codeword is correct on the second attempt
+        if (codewordInput.value === 'secret123') { // Replace 'secret123' with your desired codeword
+          popup.remove();
+          overlay.remove();
+        } else {
+          errorMessage.style.display = 'block'; // Show error message
+          codewordInput.value = ''; // Clear the input field
+        }
+      }
     });
   }
   

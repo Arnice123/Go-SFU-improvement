@@ -30,8 +30,16 @@
     align-items: center;
   }
   
-  /* Style for the close button */
-  #closePopup {
+  /* Style for the text input */
+  #codewordInput {
+    margin-top: 10px;
+    padding: 5px;
+    width: 80%;
+    font-size: 16px;
+  }
+  
+  /* Style for the submit button */
+  #submitCodeword {
     margin-top: 10px;
     padding: 5px 10px;
     background-color: #007bff;
@@ -40,6 +48,12 @@
     cursor: pointer;
   }
   
-  #closePopup:hover {
+  #submitCodeword:hover {
     background-color: #0056b3;
+  }
+  
+  /* Style for the error message */
+  #errorMessage {
+    margin-top: 10px;
+    font-size: 14px;
   }
