@@ -6,7 +6,7 @@ const imagePopupGrid = document.querySelector('.image-popup-grid');
 const imagePopupResult = document.getElementById('imagePopupResult');
 
 // Correct Image (Always the same image, but its position changes)
-const correctImageName = 'image1.png'; // Always use this image as the correct one
+const correctImageName = 'clebron2.png'; // Always use this image as the correct one
 
 // Function to open the popup
 openPopupButton.addEventListener('click', () => {
@@ -26,15 +26,15 @@ function loadImages() {
 
   // Create an array of image filenames
   const images = [
-    'image1.png',
-    'image2.png',
-    'image3.png',
-    'image4.png',
-    'image5.png',
-    'image6.png',
-    'image7.png',
-    'image8.png',
-    'image9.png'
+    'cgoat1.png',
+    'cgoat2.png',
+    'cgoat3.png',
+    'cjordan1.png',
+    'cjordan2.png',
+    'clebron1.png',
+    'ckareem1.png',
+    'ckareem2.png',
+    'cshaq1.png'
   ];
 
   // Shuffle the array to randomize the positions
