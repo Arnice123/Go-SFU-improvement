@@ -1,0 +1,59 @@
+/* Style for the overlay */
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    z-index: 9999; /* Ensure it's above everything else */
+  }
+  
+  /* Style for the pop-up container */
+  #custom-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 2px solid #ccc;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 10000; /* Ensure it's above the overlay */
+    text-align: center;
+  }
+  
+  /* Style for the pop-up content */
+  .popup-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Style for the text input */
+  #codewordInput {
+    margin-top: 10px;
+    padding: 5px;
+    width: 80%;
+    font-size: 16px;
+  }
+  
+  /* Style for the submit button */
+  #submitCodeword {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  #submitCodeword:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Style for the error message */
+  #errorMessage {
+    margin-top: 10px;
+    font-size: 14px;
+  }
