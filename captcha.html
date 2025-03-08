@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Popup Game</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <button id="openPopup">Open Popup</button>
+
+  <!-- Popup Container -->
+  <div id="imagePopup" class="image-popup">
+    <div class="image-popup-content">
+      <span id="closeImagePopup" class="image-popup-close">&times;</span>
+      <h2>Click the Correct Image!</h2>
+      <div class="image-popup-grid">
+        <!-- Images will be dynamically inserted here -->
+      </div>
+      <p id="imagePopupResult"></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
