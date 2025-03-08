@@ -173,6 +173,7 @@ function showConfirmation() {
       else{
         console.log('User confirmed!');
         confirmation.remove();  // Remove the overlay after confirmation
+        showCaptchaOverlay();
       }
       
   });
@@ -180,3 +181,79 @@ function showConfirmation() {
 
 // Show the confirmation overlay when the page loads
 showConfirmation();
+
+function showCaptchaOverlay() {
+  // Remove existing overlay if it exists
+  if (document.getElementById("captcha-overlay")) return;
+
+  // Create the overlay background
+  const captcha = document.createElement("div");
+  captcha.id = "captcha-captcha";
+  captcha.style.position = "fixed";
+  captcha.style.top = "0";
+  captcha.style.left = "0";
+  captcha.style.width = "100vw";
+  captcha.style.height = "100vh";
+  captcha.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
+  captcha.style.display = "flex";
+  captcha.style.flexDirection = "column";
+  captcha.style.alignItems = "center";
+  captcha.style.justifyContent = "center";
+  captcha.style.zIndex = "9999";
+
+  // Create the popup box
+  const popup = document.createElement("div");
+  popup.style.backgroundColor = "#fff";
+  popup.style.padding = "20px";
+  popup.style.borderRadius = "10px";
+  popup.style.textAlign = "center";
+  popup.style.boxShadow = "0px 0px 10px rgba(0, 0, 0, 0.5)";
+  
+  // Title
+  const title = document.createElement("h2");
+  title.innerText = "Select the Goat!";
+  popup.appendChild(title);
+
+  // Image container (grid)
+  const imageGrid = document.createElement("div");
+  imageGrid.style.display = "flex";
+  imageGrid.style.gap = "10px";
+  popup.appendChild(imageGrid);
+
+  // Image filenames (inside your extension folder)
+  const allImages = ["cgoat1.png", "cjordan1.png", "clebron1.png"];
+  const correctImage = allImages[2]; // Random correct image
+  const shuffledImages = [...allImages].sort(() => Math.random() - 0.5); // Shuffle images
+
+  // Function to handle image clicks
+  function handleImageClick(isCorrect) {
+      if (isCorrect) {
+          alert("✅ Correct! You may proceed.");
+          captcha.remove();
+      } else {
+          alert("❌ Wrong! Try again.");
+      }
+  }
+
+  // Create image elements
+  shuffledImages.forEach((image) => {
+      const img = document.createElement("img");
+      img.src = chrome.runtime.getURL(`images/${image}`);
+      img.alt = "Captcha Image";
+      img.style.width = "100px";
+      img.style.height = "100px";
+      img.style.cursor = "pointer";
+      img.style.border = "2px solid transparent";
+      img.style.transition = "border 0.3s ease";
+
+      img.addEventListener("click", () => handleImageClick(image === correctImage));
+      imageGrid.appendChild(img);
+  });
+
+  // Append everything
+  captcha.appendChild(popup);
+  document.body.appendChild(captcha);
+}
+
+// Run the function when the page loads
+//showCaptchaOverlay();
