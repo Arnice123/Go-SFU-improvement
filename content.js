@@ -61,30 +61,31 @@ setInterval(showPopup, 120000);
 
 function showConfirmation() {
   // Create the overlay div
-  let overlay = document.createElement('div');
-  overlay.id = 'confirmation-overlay';
-  overlay.style.position = 'fixed';
-  overlay.style.top = '0';
-  overlay.style.left = '0';
-  overlay.style.width = '100vw';   // Full width
-  overlay.style.height = '100vh';  // Full height
-  overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';  // Semi-transparent black
-  overlay.style.opacity = '0';
-  overlay.style.zIndex = '9999';  // Ensure it’s on top of other content
-  overlay.style.display = 'flex';
-  overlay.style.justifyContent = 'center';
-  overlay.style.alignItems = 'center';
+
+  let confirmation = document.createElement('div');
+  confirmation.id = 'confirmation-overlay';
+  confirmation.style.position = 'fixed';
+  confirmation.style.top = '0';
+  confirmation.style.left = '0';
+  confirmation.style.width = '100vw';   // Full width
+  confirmation.style.height = '100vh';  // Full height
+  confirmation.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';  // Semi-transparent black
+  confirmation.style.opacity = '0';
+  confirmation.style.zIndex = '9999';  // Ensure it’s on top of other content
+  confirmation.style.display = 'flex';
+  confirmation.style.justifyContent = 'center';
+  confirmation.style.alignItems = 'center';
 
   // Click Counter
   let clicks = 0;
 
 
   // Create content inside the overlay
-  let overlayText = document.createElement('div');
-  overlayText.style.color = 'white';
-  overlayText.style.fontSize = '24px';
-  overlayText.style.opacity = '0';
-  overlayText.innerText = 'Hehe';
+  let confirmationText = document.createElement('div');
+  confirmationText.style.color = 'white';
+  confirmationText.style.fontSize = '24px';
+  confirmationText.style.opacity = '0';
+  confirmationText.innerText = 'Hehe';
 
   // Add a confirmation button to the overlay
   let confirmButton = document.createElement('button');
@@ -95,11 +96,11 @@ function showConfirmation() {
   //confirmButton.style.marginTop = '20px';
 
   // Append the text and button to the overlay
-  overlay.appendChild(overlayText);
-  overlay.appendChild(confirmButton);
+  confirmation.appendChild(confirmationText);
+  confirmation.appendChild(confirmButton);
 
   // Append the overlay to the body
-  document.body.appendChild(overlay);
+  document.body.appendChild(confirmation);
 
   // Add event listener to handle confirmation button click
   confirmButton.addEventListener('click', function () {
@@ -109,7 +110,7 @@ function showConfirmation() {
       } 
       else{
         console.log('User confirmed!');
-        overlay.remove();  // Remove the overlay after confirmation
+        confirmation.remove();  // Remove the overlay after confirmation
       }
       
   });
