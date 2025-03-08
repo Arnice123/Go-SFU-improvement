@@ -255,5 +255,4 @@ function showCaptchaOverlay() {
   document.body.appendChild(captcha);
 }
 
-// Run the function when the page loads
-//showCaptchaOverlay();
+
