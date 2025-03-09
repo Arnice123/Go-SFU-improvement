@@ -319,7 +319,7 @@ function showAd() {
   popup.id = 'popup-ad';
   popup.style.position = 'fixed';
   popup.style.top = '0%';
-  popup.style.left = (Math.floor(Math.random()*50)+25).toString() +'%';
+  popup.style.left = (Math.floor(Math.random()*60)+15).toString() +'%';
   popup.style.height = '15vh';
   popup.style.width = '15vw';
   popup.style.transform = 'translate(-50%, -50%)';
@@ -329,7 +329,7 @@ function showAd() {
   popup.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.2)';
   popup.style.textAlign = 'center';
   popup.style.zIndex = '9999'; // On top of the overlay
-  popup.style.marginTop = (Math.floor(Math.random()*40)+15).toString() +'%';
+  popup.style.marginTop = (Math.floor(Math.random()*50)+10).toString() +'%';
   popup.innerHTML = `
       <img src="${ads[Math.round(Math.random()*12)]}" alt="Ad Image" style="max-width: 100%; height: auto; margin-bottom: 15px;">
       <button id="close-ad">Close Ad</button>
@@ -440,15 +440,12 @@ setInterval(() => {
   loading.appendChild(progressText);
   document.body.appendChild(loading);
 
-  
-  
-  
-
   setTimeout(() => {
     loading.remove(); // Removes the overlay after 5 seconds
     loadingText.remove();
     progressText.remove();
     fakeLoadingEnabled = false;
+    //setInterval(showAd, 500); // --------------------------------------------------------------------------------------------------------------------------------
     setInterval(showAd, Math.floor(Math.random() * (8000 - 2000 + 1)) + 2000);
     setInterval(showJumpscare, Math.round(Math.random()*15000-6000)+6000);
     showPopup();
@@ -472,11 +469,14 @@ function changeChangeZoom(){
       setInterval(changeZoom,500);
     } 
 }
+
 let faces ={
   0: "https://cdn.discordapp.com/attachments/1348007906460569722/1348207050319986801/SeleneDelgado.webp?ex=67ce9f29&is=67cd4da9&hm=3801b3950df163cb7637a56094f5cf4fb99a7a98efa32a0e7dcb98d230720414&",
   1: "https://cdn.discordapp.com/attachments/1348007906460569722/1348200380311535627/misty1.jpg?ex=67ce98f3&is=67cd4773&hm=9f67b68e5a37799eb9baa4bc27827f7faf533d0bc613febf16edb80a38f71cca&"
 };
+
 function showJumpscare() {
+    console.log("ski buddy");
   // Create the image element
   const flashImg = document.createElement('img');
   flashImg.src = faces[Math.floor(Math.random()*2-0.01)];
