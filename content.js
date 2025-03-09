@@ -1,6 +1,11 @@
 let isPopupDisplayed = false; // Flag to track if the pop-up is currently displayed
 let scaleT = 1;
 let increasing = true;
+let zoomT = 1;
+function zoomTimer(){
+  zoomT = 0.9 + Math.random() * (1.1 - 0.9);
+}
+setInterval(zoomTimer,1500);
 function scaleTimer(){
   if (increasing){
     scaleT += 0.02;
@@ -75,7 +80,7 @@ function showPopup() {
   popup.innerHTML = `
     <div class="popup-content">
       <h2>Access Restricted</h2>
-      <p>Solve this math problem to continue:</p>
+      <p>Solve this math problem to prove you're a human:</p>
       <p id="mathQuestion"><strong>${mathProblem.question}</strong></p>
       <input type="number" id="answerInput" placeholder="Enter your answer" />
       <button id="submitAnswer">Submit</button>
@@ -135,7 +140,7 @@ function showPopup() {
 }
 
 // Show the pop-up immediately when the page loads
-showPopup();
+
 
 // Show the pop-up every 2 minutes (120,000 milliseconds)
 //setInterval(showPopup, 120000);
@@ -430,17 +435,17 @@ setInterval(() => {
     loadingText.remove();
     progressText.remove();
     fakeLoadingEnabled = false;
+    showPopup();
   }, 15000);
   
 }
 showFakeLoading();
 
-
 function changeZoom(){
-  let newZoom = 0.9 + Math.random() * (1.1 - 0.9);
-  document.body.style.transform = `scale(${newZoom})`;  // Zoom in 150%
+  
+  document.body.style.transform = `scale(${zoomT})`;  // Zoom in 150%
   document.body.style.transformOrigin = "0 0";   // Prevent shifting
-  document.body.style.width = `${newZoom*100}`;     
+  document.body.style.width = `${zoomT*100}`;     
 }
 
 setInterval(changeChangeZoom,1000)
