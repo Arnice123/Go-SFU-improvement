@@ -18,7 +18,7 @@
     },
     "content_scripts": [
       {
-        "matches": ["https://www.sfu.ca/*", "https://sims.erp.sfu.ca/*", "https://cas.sfu.ca/*","https://coursys.sfu.ca/*"],
+        "matches": ["https://www.sfu.ca/*", "https://sims.erp.sfu.ca/*", "https://cas.sfu.ca/*","https://coursys.sfu.ca/*","https://myschedule.erp.sfu.ca/*"],
         "js": ["content.js"],
         "css": ["styles.css"]
       }
