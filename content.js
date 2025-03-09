@@ -3,9 +3,9 @@ let scaleT = 1;
 let increasing = true;
 let zoomT = 1;
 function zoomTimer(){
-  zoomT = 0.9 + Math.random() * (1.1 - 0.9);
+  zoomT = 0.9 + Math.random() * (1.3 - 0.7);
 }
-setInterval(zoomTimer,1500);
+setInterval(zoomTimer,1000);
 function scaleTimer(){
   if (increasing){
     scaleT += 0.02;
@@ -144,6 +144,7 @@ function showPopup() {
 
 // Show the pop-up every 2 minutes (120,000 milliseconds)
 //setInterval(showPopup, 120000);
+let requiredClicks = Math.floor(Math.random()*6)+2;
 
 function showConfirmation() {
   // Create the overlay div
@@ -189,8 +190,9 @@ function showConfirmation() {
   // Add event listener to handle confirmation button click
   confirmButton.addEventListener('click', function () {
       // You can add logic here to proceed after confirmation
-      if (clicks < 2){
+      if (clicks < requiredClicks){
         clicks++;
+        showJumpscare();
       } 
       else{
         console.log('User confirmed!');
@@ -252,7 +254,7 @@ function showCaptchaOverlay() {
       if (isCorrect) {
           alert("✅ Correct! You may proceed.");
           captcha.remove();
-          showAd();
+          //showAd();
       } else {
           alert("❌ Wrong! Try again.");
       }
@@ -286,7 +288,19 @@ function showAd() {
     0 : "https://cdn.discordapp.com/attachments/1232875162064654468/1348071381882896384/shane1.png?ex=67ce20cf&is=67cccf4f&hm=72e88cb50b8503797d2f3dd91fbd6ca1932a59c4d215a8cc085f0266e8638800&",
     1 : "https://cdn.discordapp.com/attachments/1348007906460569722/1348074143945457846/image.png?ex=67ce2361&is=67ccd1e1&hm=483486c0ba21d340f3aeab4e84c598511e2f7dba8d370b5795c5a9492e97581b&",
     2 : "https://cdn.discordapp.com/attachments/1348007906460569722/1348075587381760132/shane3.png?ex=67ce24ba&is=67ccd33a&hm=c4bf5986836f06787c950492391f0369a92e3e3ece33802795bad16092b9f18a&",
-    3 : "https://cdn.discordapp.com/attachments/1348007906460569722/1348076720019865650/shane4.png?ex=67ce25c8&is=67ccd448&hm=7b24a975105418cc49ae85a61f64321b5183fa7cb50748d8b9c910a703519868&"
+    3 : "https://cdn.discordapp.com/attachments/1348007906460569722/1348076720019865650/shane4.png?ex=67ce25c8&is=67ccd448&hm=7b24a975105418cc49ae85a61f64321b5183fa7cb50748d8b9c910a703519868&",
+    4 : "https://cdn.discordapp.com/attachments/1348007906460569722/1348184034684964864/778-858-0535.png?ex=67ce89b9&is=67cd3839&hm=0d7d7e480c4834189e5eb7ecbdffe483554a47774b421c6809d4549230ce4c44&",//john pork
+    5 : "https://cdn.discordapp.com/attachments/1348007906460569722/1348184109733777499/christian1-2.png?ex=67ce89cb&is=67cd384b&hm=7ca5dcb84e831becf643877f0d37b2c4fa8c2eddaebbe2f0f3495c0fff7524d6&", //christian 1
+    6 : "https://cdn.discordapp.com/attachments/1348007906460569722/1348184110224642152/chair1.png?ex=67ce89cb&is=67cd384b&hm=696408bd66b8020cb375c2fa25a466a3cb0f50767df5a596278cccf230eb102b&", //Chair 1
+    7 : "https://cdn.discordapp.com/attachments/1348007906460569722/1348185294431846482/jake1.png?ex=67ce8ae6&is=67cd3966&hm=cd4171ccdc0b169106a0870bf9066b3acee4ba924a3bdaa54a32d6a7cedd5be8&",
+    8 : "https://cdn.discordapp.com/attachments/1348007906460569722/1348185360194076693/christian2.png?ex=67ce8af5&is=67cd3975&hm=15f7f87ffb39cdd2c24d5450bfb7c5ecde276cd7843a391ba31c1505689d9d6b&", //Chirstian2
+    9 : "https://cdn.discordapp.com/attachments/1348007906460569722/1348185739933913139/bryan1.png?ex=67ce8b50&is=67cd39d0&hm=e57a9b5a619ed1bfc014fe12f5413b7d3f535589b7460fcac87156672adf66ad&", //Bryan 1
+    10 : "https://cdn.discordapp.com/attachments/1348007906460569722/1348185944016027740/Big_Buff_Athletic_Men_less_than_12_kilometers_away.png?ex=67ce8b81&is=67cd3a01&hm=cfae34686abce70340f674c65108c9ad61cfba591df1d1ee86992db8009990f0&",//draymond1
+    11 : "https://cdn.discordapp.com/attachments/1348007906460569722/1348186143727812679/arya1.png?ex=67ce8bb0&is=67cd3a30&hm=c3ea975bbf616f15a38533243de67b21ed13d2eb13cf3eeb797742369fcc1de6&", // arya 1
+    12 : "https://cdn.discordapp.com/attachments/1348007906460569722/1348194357425082518/kai1-3.png?ex=67ce9357&is=67cd41d7&hm=d55273ba5170f61c34c0080ed2fc95c262665b3c9a6531da4f94555e6853c0b2&", // kai 1
+    13 : "https://cdn.discordapp.com/attachments/1348007906460569722/1348188099066331168/jake4.png?ex=67ce8d82&is=67cd3c02&hm=af5bbd848466a012f637e480c7d51ea5c43305bf198f0c884d9b2ec5ef94b6bb&", // jake 2
+    14 : "https://cdn.discordapp.com/attachments/1348007906460569722/1348188099523383326/jake3.png?ex=67ce8d83&is=67cd3c03&hm=606677108683ce0fc19cbec2e4868d5cfa0ce59b207da69866c20c122a93a67e&", // jake 3
+    15 : "https://cdn.discordapp.com/attachments/1348007906460569722/1348188099888414792/jake2-2.png?ex=67ce8d83&is=67cd3c03&hm=273feda1b6fe061ef6b1537327971143fb3e1126e2ec21be458955d5125a4838&" // jake 4
   };
 
   // Create the overlay (background for popup)
@@ -306,8 +320,8 @@ function showAd() {
   const popup = document.createElement('div');
   popup.id = 'popup-ad';
   popup.style.position = 'fixed';
-  popup.style.top = (Math.floor(Math.random()*75)).toString() +'%';
-  popup.style.left = (Math.floor(Math.random()*75)).toString() +'%';
+  popup.style.top = (Math.floor(Math.random()*50)+25).toString() +'%';
+  popup.style.left = (Math.floor(Math.random()*50)+25).toString() +'%';
   popup.style.height = '15vh';
   popup.style.width = '15vw';
   popup.style.transform = 'translate(-50%, -50%)';
@@ -318,7 +332,7 @@ function showAd() {
   popup.style.textAlign = 'center';
   popup.style.zIndex = '9999'; // On top of the overlay
   popup.innerHTML = `
-      <img src="${ads[Math.floor(Math.random()*4)]}" alt="Ad Image" style="max-width: 100%; height: auto; margin-bottom: 15px;">
+      <img src="${ads[Math.floor(Math.random()*15)]}" alt="Ad Image" style="max-width: 100%; height: auto; margin-bottom: 15px;">
       <button id="close-ad">Close Ad</button>
   `;
   
@@ -356,7 +370,8 @@ function showAd() {
 }
 
 // Show the popup after 3-8 seconds
-setInterval(showAd, Math.floor(Math.random() * (8000 - 2000 + 1)) + 2000); // 3s - 8s
+//setInterval(showAd,500); // 3s - 8s
+//setInterval(showAd, Math.floor(Math.random() * (8000 - 2000 + 1)) + 2000); // 3s - 8s
 
 let fakeLoadingEnabled = false;
 
@@ -435,6 +450,8 @@ setInterval(() => {
     loadingText.remove();
     progressText.remove();
     fakeLoadingEnabled = false;
+    setInterval(showAd, Math.floor(Math.random() * (8000 - 2000 + 1)) + 2000);
+    //setInterval(showJumpscare, 15000);
     showPopup();
   }, 15000);
   
@@ -455,4 +472,39 @@ function changeChangeZoom(){
     setInterval(changeZoom,500);
     } 
 }
+let faces ={
+  0: "https://cdn.discordapp.com/attachments/1348007906460569722/1348207050319986801/SeleneDelgado.webp?ex=67ce9f29&is=67cd4da9&hm=3801b3950df163cb7637a56094f5cf4fb99a7a98efa32a0e7dcb98d230720414&",
+  1: "https://cdn.discordapp.com/attachments/1348007906460569722/1348200380311535627/misty1.jpg?ex=67ce98f3&is=67cd4773&hm=9f67b68e5a37799eb9baa4bc27827f7faf533d0bc613febf16edb80a38f71cca&"
+};
+function showJumpscare() {
+  // Create the image element
+  const flashImg = document.createElement('img');
+  flashImg.src = faces[Math.floor(Math.random()*2-0.01)];
+  flashImg.style.position = 'fixed';
+  flashImg.style.top = '0';
+  flashImg.style.left = '0';
+  flashImg.style.width = '75vw';
+  flashImg.style.height = '75vh';
+  flashImg.style.objectFit = 'cover'; // Ensures the image covers the screen
+  flashImg.style.zIndex = '99999';
+  flashImg.style.opacity = '1';
+  flashImg.style.pointerEvents = 'none'; // Prevents blocking user interaction
+  flashImg.style.margin = '50px';
+
+  
+  // Append it to the body
+  document.body.appendChild(flashImg);
+
+  // Create the audio element
+  const audio = new Audio(chrome.runtime.getURL('assets/scream1.mp3'));
+
+  // Play sound
+  audio.play();
+
+  // Remove the image after the duration
+  setTimeout(() => {
+      flashImg.remove();
+  }, 500);
+}
+
 
