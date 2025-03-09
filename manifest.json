@@ -1,8 +1,8 @@
 {
     "manifest_version": 3,
-    "name": "GoSFU Inconvenient",
+    "name": "GoSFPoo",
     "version": "1.0",
-    "description": "A Chrome extension that injects a pop-up into webpages.",
+    "description": "To Enhance your go.sfu experience!",
     "permissions": [
       "activeTab",
       "scripting"

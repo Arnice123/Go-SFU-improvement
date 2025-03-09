@@ -211,7 +211,7 @@ function showCaptchaOverlay() {
   
   // Title
   const title = document.createElement("h2");
-  title.innerText = "Select the Goat!";
+  title.innerText = "CAPTCHA: Select the Image of The Goat!";
   popup.appendChild(title);
 
   // Image container (grid)
@@ -316,6 +316,88 @@ function showAd() {
   });
 }
 
-// Show the popup after 3 seconds
-setInterval(showAd, 5000); // 3000ms = 3 seconds
+// Show the popup after 3-8 seconds
+setInterval(showAd, Math.floor(Math.random() * (8000 - 2000 + 1)) + 2000); // 3s - 8s
+
+let fakeLoadingEnabled = false;
+
+let randomProgress = (Math.floor(Math.random()*1) + 1).toString();
+// Show a fake loading screen after clicking a link
+function showFakeLoading(){
+
+  // Create loading screen overlay
+  if (fakeLoadingEnabled == true)
+  {
+    return;
+  }
+  fakeLoadingEnabled = true;
+  let loading = document.createElement('div');
+  loading.id = 'loading-overlay';
+  loading.style.position = 'fixed';
+  loading.style.top = '0';
+  loading.style.left = '0';
+  loading.style.width = '100vw';   // Full width
+  loading.style.height = '100vh';  // Full height
+  loading.style.backgroundColor = 'rgba(255, 255, 255, 1)';  // Semi-transparent black
+  loading.style.opacity = '1';
+  loading.style.zIndex = '9999';  // Ensure it's on top of other content
+  loading.style.display = 'flex';
+  loading.style.justifyContent = 'center';
+  loading.style.alignItems = 'center';
+ 
+
+  // Set loading text
+  let loadingText = document.createElement('div');
+  loadingText.style.color = 'rgba(0,0,0,1)';
+  loadingText.style.fontSize = '24px';
+  loadingText.style.opacity = '1';
+  loadingText.style.textAlign = 'center';
+  loadingText.innerHTML = `
+  <div>
+    <h2>Loading...</h2>
+  </div>`;
+
+
+  // Make Progress Text
+  let randomProgress = (Math.floor(Math.random()*100) + 1).toString();
+  let progressText = document.createElement('div');
+  progressText.style.color = 'rgba(0,0,0,1)';
+  progressText.style.fontSize = '20px';
+  progressText.style.opactiy = '1';
+  progressText.innerText = " Progress: "+ randomProgress;
+  progressText.style.textAlign = 'center';
+  progressText.style.marginTop = '10px';
+
+  let count = 1;
+
+setInterval(() => {
+    
+    randomProgress = ((Number(randomProgress) + (Math.floor(Math.random()*10) + 1)));
+    if (randomProgress > 99) {
+      randomProgress = "99."; // Convert to string so we can append 9s
+      randomProgress += "9".repeat(count); // Append one more "9" each time
+      count++;
+  }
+    randomProgress.toString();
+    progressText.innerText = `Progress: ${randomProgress}`;
+}, 500);
+
+  
+  loading.appendChild(loadingText);
+  loading.appendChild(progressText);
+  document.body.appendChild(loading);
+
+  
+  
+  
+
+  setTimeout(() => {
+    loading.remove(); // Removes the overlay after 5 seconds
+    fakeLoadingEnabled = false;
+  }, 15000);
+  
+}
+showFakeLoading();
+
+
 
