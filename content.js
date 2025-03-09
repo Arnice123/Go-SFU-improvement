@@ -400,4 +400,17 @@ setInterval(() => {
 showFakeLoading();
 
 
+function changeZoom(){
+  let newZoom = 0.9 + Math.random() * (1.1 - 0.9);
+  document.body.style.transform = `scale(${newZoom})`;  // Zoom in 150%
+  document.body.style.transformOrigin = "0 0";   // Prevent shifting
+  document.body.style.width = `${newZoom*100}`;     
+}
 
+setInterval(changeChangeZoom,1000)
+  
+function changeChangeZoom(){
+    if(fakeLoadingEnabled == false && isPopupDisplayed == false){
+    setInterval(changeZoom,500);
+    } 
+}

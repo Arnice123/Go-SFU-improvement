@@ -5,7 +5,8 @@
     "description": "To Enhance your go.sfu experience!",
     "permissions": [
       "activeTab",
-      "scripting"
+      "scripting",
+      "tabs"
     ],
     "action": {
       "default_popup": "popup.html",
@@ -17,7 +18,7 @@
     },
     "content_scripts": [
       {
-        "matches": ["<all_urls>"],
+        "matches": ["https://sims.erp.sfu.ca/*","https://www.sfu.ca/*"],
         "js": ["content.js"],
         "css": ["styles.css"]
       }
