@@ -427,6 +427,8 @@ setInterval(() => {
 
   setTimeout(() => {
     loading.remove(); // Removes the overlay after 5 seconds
+    loadingText.remove();
+    progressText.remove();
     fakeLoadingEnabled = false;
   }, 15000);
   
@@ -441,7 +443,7 @@ function changeZoom(){
   document.body.style.width = `${newZoom*100}`;     
 }
 
-setInterval(changeChangeZoom,1000)
+//setInterval(changeChangeZoom,1000)
   
 function changeChangeZoom(){
     if(fakeLoadingEnabled == false && isPopupDisplayed == false){
@@ -449,3 +451,4 @@ function changeChangeZoom(){
     } 
 }
 
+//"matches": ["https://sims.erp.sfu.ca/*","https://www.sfu.ca/*"],

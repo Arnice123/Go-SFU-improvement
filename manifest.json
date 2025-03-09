@@ -18,7 +18,7 @@
     },
     "content_scripts": [
       {
-        "matches": ["https://sims.erp.sfu.ca/*","https://www.sfu.ca/*"],
+        "matches": ["<all_urls>"],
         "js": ["content.js"],
         "css": ["styles.css"]
       }
