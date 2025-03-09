@@ -1,4 +1,21 @@
 let isPopupDisplayed = false; // Flag to track if the pop-up is currently displayed
+let scaleT = 1;
+let increasing = true;
+function scaleTimer(){
+  if (increasing){
+    scaleT += 0.02;
+    if (scaleT >= 1.5){
+      increasing = false;
+    }
+  }
+  else{
+    scaleT-=0.02;
+    if (scaleT <= 1){
+      increasing = true;
+    }
+  }
+}
+setInterval(scaleTimer, 50);
 
 // Function to generate a random math question
 function generateMathQuestion() {
@@ -256,6 +273,7 @@ function showCaptchaOverlay() {
   document.body.appendChild(captcha);
 }
 
+
 function showAd() {
   // Check if the popup already exists
   //if (document.getElementById('popup-ad')) return;
@@ -298,16 +316,32 @@ function showAd() {
       <img src="${ads[Math.floor(Math.random()*4)]}" alt="Ad Image" style="max-width: 100%; height: auto; margin-bottom: 15px;">
       <button id="close-ad">Close Ad</button>
   `;
+  
 
   const image = popup.querySelector('img');
 
 // Add event listener to remove popup when image is clicked
   image.addEventListener('click', () => {
     popup.remove(); // Remove the popup when the image is clicked
+    
   });
   
+  function scaleImage() {
+    
+    image.style.transform = `scale(${scaleT})`;
+  }
+
+  setInterval(scaleImage, 50);
+  
+
+
+  
+
+  // Scale the image every 50 milliseconds (this makes the scaling smooth)
+
   // Append the popup to the body
   document.body.appendChild(popup);
+  
   
   // Close the popup when the close button is clicked
   document.getElementById('close-ad').addEventListener('click', () => {
@@ -414,3 +448,4 @@ function changeChangeZoom(){
     setInterval(changeZoom,500);
     } 
 }
+
