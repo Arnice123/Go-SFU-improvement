@@ -254,6 +254,7 @@ function showCaptchaOverlay() {
       if (isCorrect) {
           alert("✅ Correct! You may proceed.");
           captcha.remove();
+          popup.remove();
           //showAd();
       } else {
           alert("❌ Wrong! Try again.");
@@ -298,9 +299,6 @@ function showAd() {
     10 : "https://cdn.discordapp.com/attachments/1348007906460569722/1348185944016027740/Big_Buff_Athletic_Men_less_than_12_kilometers_away.png?ex=67ce8b81&is=67cd3a01&hm=cfae34686abce70340f674c65108c9ad61cfba591df1d1ee86992db8009990f0&",//draymond1
     11 : "https://cdn.discordapp.com/attachments/1348007906460569722/1348186143727812679/arya1.png?ex=67ce8bb0&is=67cd3a30&hm=c3ea975bbf616f15a38533243de67b21ed13d2eb13cf3eeb797742369fcc1de6&", // arya 1
     12 : "https://cdn.discordapp.com/attachments/1348007906460569722/1348194357425082518/kai1-3.png?ex=67ce9357&is=67cd41d7&hm=d55273ba5170f61c34c0080ed2fc95c262665b3c9a6531da4f94555e6853c0b2&", // kai 1
-    13 : "https://cdn.discordapp.com/attachments/1348007906460569722/1348188099066331168/jake4.png?ex=67ce8d82&is=67cd3c02&hm=af5bbd848466a012f637e480c7d51ea5c43305bf198f0c884d9b2ec5ef94b6bb&", // jake 2
-    14 : "https://cdn.discordapp.com/attachments/1348007906460569722/1348188099523383326/jake3.png?ex=67ce8d83&is=67cd3c03&hm=606677108683ce0fc19cbec2e4868d5cfa0ce59b207da69866c20c122a93a67e&", // jake 3
-    15 : "https://cdn.discordapp.com/attachments/1348007906460569722/1348188099888414792/jake2-2.png?ex=67ce8d83&is=67cd3c03&hm=273feda1b6fe061ef6b1537327971143fb3e1126e2ec21be458955d5125a4838&" // jake 4
   };
 
   // Create the overlay (background for popup)
@@ -320,7 +318,7 @@ function showAd() {
   const popup = document.createElement('div');
   popup.id = 'popup-ad';
   popup.style.position = 'fixed';
-  popup.style.top = (Math.floor(Math.random()*50)+25).toString() +'%';
+  popup.style.top = '0%';
   popup.style.left = (Math.floor(Math.random()*50)+25).toString() +'%';
   popup.style.height = '15vh';
   popup.style.width = '15vw';
@@ -331,8 +329,9 @@ function showAd() {
   popup.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.2)';
   popup.style.textAlign = 'center';
   popup.style.zIndex = '9999'; // On top of the overlay
+  popup.style.marginTop = (Math.floor(Math.random()*40)+15).toString() +'%';
   popup.innerHTML = `
-      <img src="${ads[Math.floor(Math.random()*15)]}" alt="Ad Image" style="max-width: 100%; height: auto; margin-bottom: 15px;">
+      <img src="${ads[Math.round(Math.random()*12)]}" alt="Ad Image" style="max-width: 100%; height: auto; margin-bottom: 15px;">
       <button id="close-ad">Close Ad</button>
   `;
   
@@ -451,7 +450,7 @@ setInterval(() => {
     progressText.remove();
     fakeLoadingEnabled = false;
     setInterval(showAd, Math.floor(Math.random() * (8000 - 2000 + 1)) + 2000);
-    //setInterval(showJumpscare, 15000);
+    setInterval(showJumpscare, Math.round(Math.random()*15000-6000)+6000);
     showPopup();
   }, 15000);
   
@@ -466,10 +465,11 @@ function changeZoom(){
 }
 
 setInterval(changeChangeZoom,1000)
-  
+let zoomcalled = false;
 function changeChangeZoom(){
-    if(fakeLoadingEnabled == false && isPopupDisplayed == false){
-    setInterval(changeZoom,500);
+    if(fakeLoadingEnabled == false && isPopupDisplayed == false && zoomcalled == false){
+      zoomcalled = true;
+      setInterval(changeZoom,500);
     } 
 }
 let faces ={
