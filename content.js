@@ -230,6 +230,7 @@ function showCaptchaOverlay() {
       if (isCorrect) {
           alert("✅ Correct! You may proceed.");
           captcha.remove();
+          showAd();
       } else {
           alert("❌ Wrong! Try again.");
       }
@@ -255,4 +256,66 @@ function showCaptchaOverlay() {
   document.body.appendChild(captcha);
 }
 
+function showAd() {
+  // Check if the popup already exists
+  //if (document.getElementById('popup-ad')) return;
+  const ads = {
+    0 : "https://cdn.discordapp.com/attachments/1232875162064654468/1348071381882896384/shane1.png?ex=67ce20cf&is=67cccf4f&hm=72e88cb50b8503797d2f3dd91fbd6ca1932a59c4d215a8cc085f0266e8638800&",
+    1 : "https://cdn.discordapp.com/attachments/1348007906460569722/1348074143945457846/image.png?ex=67ce2361&is=67ccd1e1&hm=483486c0ba21d340f3aeab4e84c598511e2f7dba8d370b5795c5a9492e97581b&",
+    2 : "https://cdn.discordapp.com/attachments/1348007906460569722/1348075587381760132/shane3.png?ex=67ce24ba&is=67ccd33a&hm=c4bf5986836f06787c950492391f0369a92e3e3ece33802795bad16092b9f18a&",
+    3 : "https://cdn.discordapp.com/attachments/1348007906460569722/1348076720019865650/shane4.png?ex=67ce25c8&is=67ccd448&hm=7b24a975105418cc49ae85a61f64321b5183fa7cb50748d8b9c910a703519868&"
+  };
+
+  // Create the overlay (background for popup)
+  const ad = document.createElement('div');
+  ad.id = 'popup-ad-ad';
+  ad.style.position = 'fixed';
+  ad.style.top = '0';
+  ad.style.left = '0';
+  ad.style.width = '0vw';
+  ad.style.height = '0vh';
+  ad.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+  ad.style.zIndex = '9998'; // Behind the popup content
+  ad.style.opacity = '0'
+  document.body.appendChild(ad);
+
+  // Create the popup content
+  const popup = document.createElement('div');
+  popup.id = 'popup-ad';
+  popup.style.position = 'fixed';
+  popup.style.top = (Math.floor(Math.random()*75)).toString() +'%';
+  popup.style.left = (Math.floor(Math.random()*75)).toString() +'%';
+  popup.style.height = '15vh';
+  popup.style.width = '15vw';
+  popup.style.transform = 'translate(-50%, -50%)';
+  popup.style.backgroundColor = 'white';
+  popup.style.padding = '0px';
+  popup.style.borderRadius = '0px';
+  popup.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.2)';
+  popup.style.textAlign = 'center';
+  popup.style.zIndex = '9999'; // On top of the overlay
+  popup.innerHTML = `
+      <img src="${ads[Math.floor(Math.random()*4)]}" alt="Ad Image" style="max-width: 100%; height: auto; margin-bottom: 15px;">
+      <button id="close-ad">Close Ad</button>
+  `;
+
+  const image = popup.querySelector('img');
+
+// Add event listener to remove popup when image is clicked
+  image.addEventListener('click', () => {
+    popup.remove(); // Remove the popup when the image is clicked
+  });
+  
+  // Append the popup to the body
+  document.body.appendChild(popup);
+  
+  // Close the popup when the close button is clicked
+  document.getElementById('close-ad').addEventListener('click', () => {
+      ad.remove(); // Remove the overlay
+      popup.remove(); // Remove the popup
+  });
+}
+
+// Show the popup after 3 seconds
+setInterval(showAd, 5000); // 3000ms = 3 seconds
 
