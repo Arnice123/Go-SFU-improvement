@@ -138,7 +138,7 @@ function showPopup() {
 showPopup();
 
 // Show the pop-up every 2 minutes (120,000 milliseconds)
-setInterval(showPopup, 120000);
+//setInterval(showPopup, 120000);
 
 function showConfirmation() {
   // Create the overlay div
@@ -443,7 +443,7 @@ function changeZoom(){
   document.body.style.width = `${newZoom*100}`;     
 }
 
-//setInterval(changeChangeZoom,1000)
+setInterval(changeChangeZoom,1000)
   
 function changeChangeZoom(){
     if(fakeLoadingEnabled == false && isPopupDisplayed == false){
@@ -451,4 +451,3 @@ function changeChangeZoom(){
     } 
 }
 
-//"matches": ["https://sims.erp.sfu.ca/*","https://www.sfu.ca/*"],
